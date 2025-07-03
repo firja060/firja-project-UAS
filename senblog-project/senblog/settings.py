@@ -119,7 +119,7 @@ import dj_database_url
 # Untuk production (Render)
 if os.environ.get('RENDER'):
     DEBUG = False
-    ALLOWED_HOSTS = ['your-render-url.onrender.com']  # Ganti nanti
+    ALLOWED_HOSTS = ['firja-Project-UAS.onrender.com']  # Ganti nanti
 
     DATABASES = {
         'default': dj_database_url.config(
