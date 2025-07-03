@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Pengguna{% endblock %}
+
+{% block content %}
+<h1>Dashboard</h1>
+
+<!-- ✅ Langkah 5: Tambah tombol tambah berita -->
+<a href="{% url 'tambah_berita' %}"
+    style="display: inline-block; margin-bottom: 20px; background-color: #28a745; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none;">
+    ➕ Tambah Berita
+</a>
+
+{% if berita_user %}
+{% for b in berita_user %}
+<div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <h2><a href="{% url 'berita_detail' b.pk %}">{{ b.judul }}</a></h2>
+    <p style="color: #666;">
+        Kategori: {{ b.kategori.nama }} |
+        Dipublikasikan: {{ b.created_at|date:"d M Y, H:i" }} WIB
+    </p>
+    <p>{{ b.konten|truncatechars:150|safe }}</p>
+    <a href="{% url 'berita_detail' b.pk %}" style="color: #007bff;">Lihat Selengkapnya</a>
+</div>
+{% endfor %}
+{% else %}
+<p>Belum ada berita tersedia.</p>
+{% endif %}
+
+<a href="{% url 'home' %}" style="margin-top: 30px; display: inline-block;">← Kembali ke Beranda</a>
+{% endblock %}

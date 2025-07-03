@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Berita Terkini{% endblock %}
+
+{% block content %}
+<h1>Berita Terkini</h1>
+
+<form method="get" action="{% url 'home' %}">
+    <input type="text" name="q" placeholder="Cari berita..." value="{{ request.GET.q|default_if_none:'' }}">
+
+    <select name="kategori">
+        <option value="">-- Semua Kategori --</option>
+        {% for k in kategori %}
+        {% if k.id|stringformat:"s" == selected_kategori|stringformat:"s" %}
+        <option value="{{ k.id }}" selected>{{ k.nama }}</option>
+        {% else %}
+        <option value="{{ k.id }}">{{ k.nama }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+
+    <button type="submit">Cari</button>
+</form>
+
+<hr>
+
+{# ✅ Bagian Berita Terbaru #}
+{% if berita_terbaru %}
+<div
+    style="margin-bottom: 30px; background: #f9f9f9; padding: 20px; border-left: 5px solid purple; border-radius: 8px;">
+    <h2 style="margin-bottom: 10px; color: darkred;">🔥 Berita Terbaru</h2>
+
+    {% if berita_terbaru.gambar %}
+    <img src="{{ berita_terbaru.gambar.url }}" alt="{{ berita_terbaru.judul }}"
+        style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+    {% endif %}
+
+    <h3 style="margin-bottom: 5px;"><a href="{% url 'berita_detail' berita_terbaru.id %}">{{ berita_terbaru.judul }}</a>
+    </h3>
+    <p style="color: #777; margin-bottom: 10px;">
+        {{ berita_terbaru.created_at|date:"d M Y, H:i" }} WIB |
+        Kategori: {{ berita_terbaru.kategori.nama }}
+    </p>
+    <p>{{ berita_terbaru.konten|truncatechars:250|safe }}</p>
+    <a href="{% url 'berita_detail' berita_terbaru.id %}" style="color: #007bff;">Baca selengkapnya →</a>
+</div>
+<hr>
+{% endif %}
+
+{# 🔁 Daftar Berita Lainnya #}
+{% for b in berita %}
+<div class="berita"
+    style="margin-block-end: 30px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: #fff;">
+
+    {% if b.gambar %}
+    <img src="{{ b.gambar.url }}" alt="{{ b.judul }}"
+        style="inline-size: 100%; max-block-size: 200px; object-fit: cover; margin-block-end: 10px; border-radius: 8px;">
+    {% endif %}
+
+    <h2 style="color: purple;"><a href="{% url 'berita_detail' b.id %}">{{ b.judul }}</a></h2>
+
+    <p style="color: #777;">
+        <span class="kategori kategori-{{ b.kategori.nama|lower }}">Kategori: {{ b.kategori.nama }}</span> |
+        {{ b.created_at|date:"d M Y, H:i" }} WIB
+    </p>
+
+    <p>{{ b.konten|truncatechars:200|safe }}</p>
+
+    <a href="{% url 'berita_detail' b.id %}" style="color: #007bff;">Baca selengkapnya →</a>
+</div>
+{% empty %}
+<p><em>Tidak ada berita ditemukan.</em></p>
+{% endfor %}
+
+{% if berita.has_other_pages %}
+<div class="pagination">
+    {% if berita.has_previous %}
+    <a
+        href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}{% if selected_kategori %}kategori={{ selected_kategori }}&{% endif %}page={{ berita.previous_page_number }}">«
+        Sebelumnya</a>
+    {% endif %}
+
+    <span>Halaman {{ berita.number }} dari {{ berita.paginator.num_pages }}</span>
+
+    {% if berita.has_next %}
+    <a
+        href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}{% if selected_kategori %}kategori={{ selected_kategori }}&{% endif %}page={{ berita.next_page_number }}">Berikutnya
+        »</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

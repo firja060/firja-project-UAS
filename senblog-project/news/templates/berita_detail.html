@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ berita.judul }}{% endblock %}
+
+{% block content %}
+<article style="background: #fff; padding: 20px; border-radius: 10px;">
+    <h1 style="margin-bottom: 10px;">{{ berita.judul }}</h1>
+
+    <p style="color: #777; margin-bottom: 15px;">
+        Kategori: {{ berita.kategori.nama }} |
+        Dipublikasikan: {{ berita.created_at|date:"d M Y, H:i" }} WIB
+    </p>
+
+    {% if berita.gambar %}
+    <img src="{{ berita.gambar.url }}" alt="{{ berita.judul }}"
+        style="max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 8px;">
+    {% endif %}
+
+    <div class="konten" style="line-height: 1.7; font-size: 1.1em;">
+        {{ berita.konten|safe }}
+    </div>
+
+    <a href="{% url 'home' %}" style="display:inline-block; margin-top: 30px; color: #007bff;">← Kembali ke Beranda</a>
+</article>
+{% endblock %}

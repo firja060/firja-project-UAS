@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Tambah Berita{% endblock %}
+{% block content %}
+<h2>Tambah Berita Baru</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Simpan</button>
+</form>
+<a href="{% url 'dashboard' %}">← Kembali ke Dashboard</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: berita-viral
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn senblog.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: senblog.settings
+      - key: PYTHON_VERSION
+        value: 3.11

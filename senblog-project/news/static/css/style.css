@@ -1,0 +1,258 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 20px;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.berita {
+    background-color: #fff;
+    border-inline-start: 5px solid #007bff;
+    padding: 15px;
+    margin-block-end: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Gaya kategori khusus */
+.kategori-teknologi {
+    color: purple;
+    font-weight: bold;
+}
+
+.kategori-politik {
+    color: red;
+    font-weight: bold;
+}
+
+.kategori-olahraga {
+    color: green;
+    font-weight: bold;
+}
+
+/* Tombol pagination */
+.pagination a {
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #4a148c;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form input[type="text"], form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-width: 200px;
+}
+
+form button {
+    padding: 8px 15px;
+    background: #4a148c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #6a1b9a;
+}
+
+.berita {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.berita img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.berita h2 {
+    margin-top: 0;
+    color: #4a148c;
+}
+
+.berita p {
+    line-height: 1.6;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 8px 12px;
+    background: #4a148c;
+    color: white;
+    border-radius: 6px;
+}
+
+.pagination span {
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: #4a148c;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    color: white;
+}
+
+.navbar-brand a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-links a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 30px;
+    background: #f2f2f2;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.pagination a {
+    padding: 6px 12px;
+    background: #6200ea;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background: #3700b3;
+}
+
+
+/* Responsif untuk layar kecil (HP) */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links {
+        margin-top: 10px;
+    }
+
+    .navbar-links a {
+        display: inline-block;
+        margin: 5px 10px 0 0;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input[type="text"],
+    form select,
+    form button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .berita img {
+        max-height: 180px;
+    }
+}
